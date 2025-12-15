@@ -36,5 +36,6 @@ class MovieScreen(MDScreen):
         self.manager.current = "home"
 
     def choose_session(self):
-        # следующий этап: экран сеансов
-        print(f"CHOOSE SESSION for movie_id={self.movie_id}")
+        screen = self.manager.get_screen("sessions")
+        screen.movie_id = self.movie_id
+        self.manager.current = "sessions"

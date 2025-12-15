@@ -1,0 +1,17 @@
+<SessionScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Сеансы"
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        MDScrollView:
+            MDBoxLayout:
+                id: sessions_container
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "12dp"
+                spacing: "12dp"
