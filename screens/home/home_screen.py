@@ -1,8 +1,33 @@
-from kivymd.uix.screen import MDScreen
+from pathlib import Path
 from kivy.lang import Builder
+from kivymd.uix.screen import MDScreen
 
-Builder.load_file("screens/home/home_screen.kv")
+from services.movie_service import MovieService
+from widgets.movie_card import MovieCard
+
+Builder.load_file(str(Path(__file__).with_name("home_screen.kv")))
 
 
 class HomeScreen(MDScreen):
-    pass
+    def on_pre_enter(self, *args):
+        # on_pre_enter гарантированно вызовется, когда ids уже готовы
+        if getattr(self, "_loaded", False):
+            return
+        self._loaded = True
+
+        self.service = MovieService()
+        self.load_movies()
+
+    def load_movies(self, query: str = ""):
+        container = self.ids.movies_container
+        container.clear_widgets()
+
+        movies = self.service.search(query)
+        for m in movies:
+            container.add_widget(MovieCard(movie=m, on_open=self.open_movie))
+
+    def on_search_live(self, text: str):
+        self.load_movies(text)
+
+    def open_movie(self, movie):
+        print(f"OPEN MOVIE: {movie.id} - {movie.title}")

@@ -6,6 +6,24 @@
             title: "Кинокасса"
             elevation: 4
 
-        MDLabel:
-            text: "Афиша"
-            halign: "center"
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "12dp"
+            spacing: "12dp"
+
+            MDTextField:
+                id: search_field
+                hint_text: "Поиск по названию..."
+                mode: "rectangle"
+                size_hint_y: None
+                height: "48dp"
+                on_text: root.on_search_live(self.text)
+
+            MDScrollView:
+                MDBoxLayout:
+                    id: movies_container
+                    orientation: "vertical"
+                    adaptive_height: True
+                    size_hint_y: None
+                    height: self.minimum_height
+                    spacing: "12dp"

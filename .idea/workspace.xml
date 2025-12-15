@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Clean architecture">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Kinokassa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kinokassa.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/theme.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/theme.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/hall/hall_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/hall/hall_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/movies.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/movies.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/movie.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/movie.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/home/home_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/home/home_screen.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/home/home_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/home/home_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/movie/movie_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/movie/movie_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/profile/profile_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/profile/profile_screen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/profile/profile_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/profile/profile_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/tickets/tickets_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tickets/tickets_screen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/movie_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/movie_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widgets/movie_card.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/movie_card.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,21 +26,21 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Packletka"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Packletka&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/Packletka/mobile_kinokassa.git",
+    "url": "https://github.com/Packletka/kinokassa.git",
     "accountId": "5d7b63d8-3a61-4bee-a7e3-6b8f0f59846d"
   }
 }]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="36tR9TjPwp3WuYTtZ5YPjyCAzIU" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -61,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
