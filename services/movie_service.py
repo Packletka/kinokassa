@@ -25,3 +25,9 @@ class MovieService:
         if not genre:
             return movies
         return [m for m in movies if genre in m.genres]
+
+    def get_by_id(self, movie_id: int) -> Movie | None:
+        for m in self.get_movies():
+            if m.id == movie_id:
+                return m
+        return None

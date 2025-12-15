@@ -30,4 +30,7 @@ class HomeScreen(MDScreen):
         self.load_movies(text)
 
     def open_movie(self, movie):
-        print(f"OPEN MOVIE: {movie.id} - {movie.title}")
+        movie_screen = self.manager.get_screen("movie")
+        movie_screen.movie_id = movie.id
+        self.manager.current = "movie"
+

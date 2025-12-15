@@ -1,0 +1,37 @@
+<MovieScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            id: bar
+            title: root.title_text
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        MDScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "12dp"
+                spacing: "12dp"
+
+                MDLabel:
+                    text: root.title_text
+                    font_style: "H5"
+                    adaptive_height: True
+
+                MDLabel:
+                    text: root.meta_text
+                    theme_text_color: "Secondary"
+                    adaptive_height: True
+
+                MDLabel:
+                    text: root.description_text
+                    adaptive_height: True
+
+                MDRaisedButton:
+                    text: "Выбрать сеанс"
+                    size_hint_x: 1
+                    on_release: root.choose_session()
