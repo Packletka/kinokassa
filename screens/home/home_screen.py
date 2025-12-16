@@ -34,3 +34,7 @@ class HomeScreen(MDScreen):
         movie_screen.movie_id = movie.id
         self.manager.current = "movie"
 
+    def open_profile(self):
+        profile = self.manager.get_screen("profile")
+        profile.back_target = "home"
+        self.manager.current = "profile"

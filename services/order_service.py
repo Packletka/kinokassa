@@ -1,7 +1,7 @@
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import List
+from typing import List, Optional
 
 from models.order import Order, OrderItem
 
@@ -14,14 +14,18 @@ class OrderService:
         raw = json.loads(self.path.read_text(encoding="utf-8"))
         return [Order.model_validate(o) for o in raw]
 
+    def list_orders_by_user(self, user_id: int) -> List[Order]:
+        return [o for o in self.list_orders() if o.user_id == user_id]
+
     def create_order(
         self,
+        user_id: int,
         session_id: int,
         movie_title: str,
         cinema_name: str,
         date: str,
         time: str,
-        seats: list[list[int]],   # [[row, seat], ...]
+        seats: list[list[int]],
         seat_price: int
     ) -> Order:
         orders = self.list_orders()
@@ -32,6 +36,7 @@ class OrderService:
 
         order = Order(
             id=next_id,
+            user_id=user_id,
             session_id=session_id,
             movie_title=movie_title,
             cinema_name=cinema_name,
@@ -45,5 +50,4 @@ class OrderService:
         raw = [o.model_dump() for o in orders]
         raw.append(order.model_dump())
         self.path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
-
         return order

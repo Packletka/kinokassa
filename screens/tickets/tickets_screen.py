@@ -4,6 +4,8 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
+from services.auth_service import AuthService
+
 
 from services.order_service import OrderService
 
@@ -18,7 +20,12 @@ class TicketsScreen(MDScreen):
         container = self.ids.tickets_container
         container.clear_widgets()
 
-        orders = OrderService().list_orders()
+        user = AuthService().get_current_user()
+        if not user:
+            container.add_widget(MDLabel(text="Войдите в профиль, чтобы видеть свои билеты", halign="center"))
+            return
+
+        orders = OrderService().list_orders_by_user(user.id)
         if not orders:
             container.add_widget(MDLabel(text="Пока нет купленных билетов", halign="center"))
             return

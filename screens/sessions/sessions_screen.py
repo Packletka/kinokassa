@@ -6,6 +6,7 @@ from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDRaisedButton
+from services.auth_service import AuthService
 
 from services.session_service import SessionService
 
@@ -60,6 +61,12 @@ class SessionScreen(MDScreen):
             container.add_widget(card)
 
     def select_session(self, session):
+        if not AuthService().get_current_user():
+            profile = self.manager.get_screen("profile")
+            profile.back_target = "sessions"
+            self.manager.current = "profile"
+            return
+
         hall = self.manager.get_screen("hall")
         hall.session_id = session.id
         hall.seat_price = session.price

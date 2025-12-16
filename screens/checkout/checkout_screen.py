@@ -6,6 +6,7 @@ from kivymd.uix.screen import MDScreen
 from services.session_service import SessionService
 from services.movie_service import MovieService
 from services.order_service import OrderService
+from services.auth_service import AuthService
 
 Builder.load_file(str(Path(__file__).with_name("checkout_screen.kv")))
 
@@ -48,6 +49,14 @@ class CheckoutScreen(MDScreen):
         self.total_line = f"Итого: {total} ₽"
 
     def confirm(self):
+        auth = AuthService()
+        user = auth.get_current_user()
+        if not user:
+            profile = self.manager.get_screen("profile")
+            profile.back_target = "checkout"
+            self.manager.current = "profile"
+            return
+
         ss = SessionService()
         ms = MovieService()
         os = OrderService()
@@ -57,6 +66,7 @@ class CheckoutScreen(MDScreen):
         cinema = ss.get_cinema_name(int(session.cinema_id)) if session else "Кинотеатр"
 
         order = os.create_order(
+            user_id=user.id,
             session_id=int(self.session_id),
             movie_title=(movie.title if movie else "Фильм"),
             cinema_name=cinema,

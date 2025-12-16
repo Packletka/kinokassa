@@ -10,6 +10,7 @@ class OrderItem(BaseModel):
 
 class Order(BaseModel):
     id: int
+    user_id: int
     session_id: int
     movie_title: str
     cinema_name: str

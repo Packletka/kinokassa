@@ -5,7 +5,68 @@
         MDTopAppBar:
             title: "Профиль"
             elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
 
-        MDLabel:
-            text: "Профиль пользователя"
-            halign: "center"
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: "12dp"
+            spacing: "12dp"
+
+            MDLabel:
+                id: status_label
+                text: "Вы не вошли"
+                halign: "center"
+                font_style: "H6"
+                adaptive_height: True
+
+            MDRaisedButton:
+                text: "Мои билеты"
+                size_hint_x: 1
+                opacity: 1 if root.is_logged_in else 0
+                disabled: False if root.is_logged_in else True
+                on_release: root.open_tickets()
+
+            MDTextField:
+                id: email_field
+                hint_text: "Email"
+                mode: "rectangle"
+                size_hint_y: None
+                height: "48dp"
+                opacity: 0 if root.is_logged_in else 1
+                disabled: True if root.is_logged_in else False
+
+            MDTextField:
+                id: pass_field
+                hint_text: "Пароль"
+                password: True
+                mode: "rectangle"
+                size_hint_y: None
+                height: "48dp"
+                opacity: 0 if root.is_logged_in else 1
+                disabled: True if root.is_logged_in else False
+
+            MDLabel:
+                id: msg_label
+                text: ""
+                theme_text_color: "Error"
+                adaptive_height: True
+
+            MDBoxLayout:
+                adaptive_height: True
+                spacing: "12dp"
+                opacity: 0 if root.is_logged_in else 1
+                disabled: True if root.is_logged_in else False
+
+                MDRaisedButton:
+                    text: "Войти"
+                    on_release: root.do_login()
+
+                MDRaisedButton:
+                    text: "Регистрация"
+                    on_release: root.do_register()
+
+            MDRaisedButton:
+                text: "Выйти"
+                opacity: 1 if root.is_logged_in else 0
+                disabled: False if root.is_logged_in else True
+                on_release: root.do_logout()
