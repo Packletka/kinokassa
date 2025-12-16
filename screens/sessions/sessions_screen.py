@@ -7,6 +7,9 @@ from kivymd.uix.label import MDLabel
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.button import MDRaisedButton
 from services.auth_service import AuthService
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.button import MDFlatButton
+from services.auth_service import AuthService
 
 from services.session_service import SessionService
 
@@ -15,6 +18,28 @@ Builder.load_file(str(Path(__file__).with_name("sessions_screen.kv")))
 
 class SessionScreen(MDScreen):
     movie_id = NumericProperty(-1)
+
+    login_dialog = None
+
+    def _open_profile(self, back_target: str):
+        profile = self.manager.get_screen("profile")
+        profile.back_target = back_target
+        self.manager.current = "profile"
+
+    def show_login_required_dialog(self, back_target: str):
+        if self.login_dialog:
+            self.login_dialog.dismiss()
+            self.login_dialog = None
+
+        self.login_dialog = MDDialog(
+            title="Нужен вход",
+            text="Чтобы выбрать места и купить билет, нужно войти в профиль.",
+            buttons=[
+                MDFlatButton(text="Отмена", on_release=lambda x: self.login_dialog.dismiss()),
+                MDFlatButton(text="Войти", on_release=lambda x: (self.login_dialog.dismiss(), self._open_profile(back_target))),
+            ],
+        )
+        self.login_dialog.open()
 
     def on_pre_enter(self, *args):
         self.service = SessionService()
@@ -62,9 +87,7 @@ class SessionScreen(MDScreen):
 
     def select_session(self, session):
         if not AuthService().get_current_user():
-            profile = self.manager.get_screen("profile")
-            profile.back_target = "sessions"
-            self.manager.current = "profile"
+            self.show_login_required_dialog(back_target="sessions")
             return
 
         hall = self.manager.get_screen("hall")

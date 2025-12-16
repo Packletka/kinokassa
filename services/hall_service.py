@@ -40,3 +40,18 @@ class HallService:
             json.dumps(raw, ensure_ascii=False, indent=2),
             encoding="utf-8"
         )
+
+    def release_seats(self, session_id: int, seats: List[Tuple[int, int]]) -> None:
+        raw = json.loads(self.occupied_path.read_text(encoding="utf-8"))
+        key = str(session_id)
+
+        occupied = set((r, s) for r, s in raw.get(key, []))
+        to_release = set(seats)
+
+        new_occupied = sorted(list(occupied - to_release))
+        raw[key] = [[r, s] for r, s in new_occupied]
+
+        self.occupied_path.write_text(
+            json.dumps(raw, ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )

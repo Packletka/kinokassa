@@ -6,6 +6,8 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
 from services.hall_service import HallService
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.button import MDFlatButton
 
 from models.seat import Seat
 from widgets.seat_button import SeatButton
@@ -14,6 +16,8 @@ Builder.load_file(str(Path(__file__).with_name("hall_screen.kv")))
 
 
 class HallScreen(MDScreen):
+    max_seats = 6
+    limit_dialog = None
     session_id = NumericProperty(-1)
     seat_price = 0
 
@@ -47,7 +51,26 @@ class HallScreen(MDScreen):
         self.update_total()
 
     def on_seat_toggle(self, *_):
+        selected_count = len([s for s in self.seats if s.is_selected])
+
+        if selected_count > self.max_seats:
+            self.show_limit_dialog()
+            return False  # запрещаем последнее нажатие (SeatButton откатит)
+
         self.update_total()
+        return True
+
+    def show_limit_dialog(self):
+        if self.limit_dialog:
+            self.limit_dialog.dismiss()
+            self.limit_dialog = None
+
+        self.limit_dialog = MDDialog(
+            title="Лимит мест",
+            text=f"За один заказ можно выбрать максимум {self.max_seats} мест.",
+            buttons=[MDFlatButton(text="Ок", on_release=lambda x: self.limit_dialog.dismiss())],
+        )
+        self.limit_dialog.open()
 
     def update_total(self):
         selected = [s for s in self.seats if s.is_selected]
@@ -68,3 +91,9 @@ class HallScreen(MDScreen):
 
     def go_back(self):
         self.manager.current = "sessions"
+
+    def on_pre_leave(self, *args):
+        # сбрасываем выбор (на всякий случай)
+        if hasattr(self, "seats"):
+            for s in self.seats:
+                s.is_selected = False

@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Simplify auth flow and fix profile UX">
-      <change afterPath="$PROJECT_DIR$/services/hall_service.py" afterDir="false" />
+    <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Implement seat reservation and prevent double booking">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/occupied_seats.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/occupied_seats.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/orders.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/orders.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/checkout/checkout_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/checkout/checkout_screen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/checkout/checkout_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/checkout/checkout_screen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/hall/hall_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/hall/hall_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/hall_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/hall_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/order_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/order_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/widgets/seat_button.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/seat_button.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +128,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765875418114</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Implement seat reservation and prevent double booking">
+      <option name="closed" value="true" />
+      <created>1765876116386</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1765876116386</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,6 +147,7 @@
     <MESSAGE value="Add hall seat selection and price calculation" />
     <MESSAGE value="Add back navigation to tickets screen" />
     <MESSAGE value="Simplify auth flow and fix profile UX" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simplify auth flow and fix profile UX" />
+    <MESSAGE value="Implement seat reservation and prevent double booking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement seat reservation and prevent double booking" />
   </component>
 </project>

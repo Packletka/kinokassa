@@ -51,3 +51,25 @@ class OrderService:
         raw.append(order.model_dump())
         self.path.write_text(json.dumps(raw, ensure_ascii=False, indent=2), encoding="utf-8")
         return order
+
+    def cancel_order(self, order_id: int, user_id: int) -> Order:
+        orders = self.list_orders()
+
+        found = None
+        for o in orders:
+            if o.id == order_id and o.user_id == user_id:
+                found = o
+                break
+
+        if not found:
+            raise ValueError("Заказ не найден.")
+        if found.status == "cancelled":
+            return found
+
+        found.status = "cancelled"
+
+        self.path.write_text(
+            json.dumps([o.model_dump() for o in orders], ensure_ascii=False, indent=2),
+            encoding="utf-8"
+        )
+        return found

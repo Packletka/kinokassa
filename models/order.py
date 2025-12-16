@@ -19,3 +19,4 @@ class Order(BaseModel):
     total: int
     items: List[OrderItem] = Field(default_factory=list)
     created_at: str
+    status: str = "paid"  # paid / canceled

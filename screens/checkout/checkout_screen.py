@@ -8,12 +8,15 @@ from services.movie_service import MovieService
 from services.order_service import OrderService
 from services.auth_service import AuthService
 from services.hall_service import HallService
-
+from kivymd.uix.dialog import MDDialog
+from kivymd.uix.button import MDFlatButton
 
 Builder.load_file(str(Path(__file__).with_name("checkout_screen.kv")))
 
 
 class CheckoutScreen(MDScreen):
+    login_dialog = None
+
     session_id = NumericProperty(-1)
     seat_price = NumericProperty(0)
     seats = ListProperty([])  # [[row, seat], ...]
@@ -26,6 +29,27 @@ class CheckoutScreen(MDScreen):
 
     def on_pre_enter(self, *args):
         self.build_summary()
+
+    def _open_profile(self, back_target: str):
+        profile = self.manager.get_screen("profile")
+        profile.back_target = back_target
+        self.manager.current = "profile"
+
+    def show_login_required_dialog(self, back_target: str):
+        if self.login_dialog:
+            self.login_dialog.dismiss()
+            self.login_dialog = None
+
+        self.login_dialog = MDDialog(
+            title="Нужен вход",
+            text="Чтобы подтвердить покупку, нужно войти в профиль.",
+            buttons=[
+                MDFlatButton(text="Отмена", on_release=lambda x: self.login_dialog.dismiss()),
+                MDFlatButton(text="Войти",
+                             on_release=lambda x: (self.login_dialog.dismiss(), self._open_profile(back_target))),
+            ],
+        )
+        self.login_dialog.open()
 
     def build_summary(self):
         ss = SessionService()
@@ -55,9 +79,7 @@ class CheckoutScreen(MDScreen):
         auth = AuthService()
         user = auth.get_current_user()
         if not user:
-            profile = self.manager.get_screen("profile")
-            profile.back_target = "checkout"
-            self.manager.current = "profile"
+            self.show_login_required_dialog(back_target="checkout")
             return
 
         ss = SessionService()
