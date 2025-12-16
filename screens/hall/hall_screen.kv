@@ -1,0 +1,32 @@
+<HallScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Выбор мест"
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        MDScrollView:
+            MDBoxLayout:
+                id: hall_container
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "12dp"
+                spacing: "12dp"
+
+        MDBoxLayout:
+            size_hint_y: None
+            height: "56dp"
+            padding: "12dp"
+            spacing: "12dp"
+
+            MDLabel:
+                id: total_label
+                text: "Итого: 0 ₽"
+                bold: True
+
+            MDRaisedButton:
+                text: "Продолжить"
+                on_release: root.proceed()

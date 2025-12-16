@@ -60,7 +60,10 @@ class SessionScreen(MDScreen):
             container.add_widget(card)
 
     def select_session(self, session):
-        print(f"SELECT SESSION id={session.id}")
+        hall = self.manager.get_screen("hall")
+        hall.session_id = session.id
+        hall.seat_price = session.price
+        self.manager.current = "hall"
 
     def go_back(self):
         self.manager.current = "movie"

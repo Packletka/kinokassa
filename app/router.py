@@ -3,6 +3,7 @@ from screens.movie.movie_screen import MovieScreen
 from screens.tickets.tickets_screen import TicketsScreen
 from screens.profile.profile_screen import ProfileScreen
 from screens.sessions.sessions_screen import SessionScreen
+from screens.hall.hall_screen import HallScreen
 
 
 def setup_routes(screen_manager):
@@ -11,5 +12,6 @@ def setup_routes(screen_manager):
     screen_manager.add_widget(TicketsScreen(name="tickets"))
     screen_manager.add_widget(ProfileScreen(name="profile"))
     screen_manager.add_widget(SessionScreen(name="sessions"))
+    screen_manager.add_widget(HallScreen(name="hall"))
 
     screen_manager.current = "home"
