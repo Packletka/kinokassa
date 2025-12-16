@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Add sessions screen with cinema selection and navigation">
-      <change afterPath="$PROJECT_DIR$/data/occupied_seats.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/seat.py" afterDir="false" />
+    <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Add hall seat selection and price calculation">
+      <change afterPath="$PROJECT_DIR$/data/orders.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/checkout/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/checkout/checkout_screen.kv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screens/checkout/checkout_screen.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/hall_layouts.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/hall_layouts.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/hall/hall_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/hall/hall_screen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/hall/hall_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/hall/hall_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/seat_button.py" beforeDir="false" afterPath="$PROJECT_DIR$/widgets/seat_button.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/tickets/tickets_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tickets/tickets_screen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/order_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/order_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/session_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/session_service.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +106,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765832940818</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add hall seat selection and price calculation">
+      <option name="closed" value="true" />
+      <created>1765869493711</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765869493711</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -111,6 +122,7 @@
     <MESSAGE value="dynamic search + 3 movie fields" />
     <MESSAGE value="Add movie details screen and navigation" />
     <MESSAGE value="Add sessions screen with cinema selection and navigation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add sessions screen with cinema selection and navigation" />
+    <MESSAGE value="Add hall seat selection and price calculation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add hall seat selection and price calculation" />
   </component>
 </project>

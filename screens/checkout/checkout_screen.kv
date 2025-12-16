@@ -1,0 +1,45 @@
+<CheckoutScreen>:
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Подтверждение"
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        MDScrollView:
+            MDBoxLayout:
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "12dp"
+                spacing: "12dp"
+
+                MDLabel:
+                    text: root.movie_title
+                    font_style: "H5"
+                    adaptive_height: True
+
+                MDLabel:
+                    text: root.cinema_line
+                    theme_text_color: "Secondary"
+                    adaptive_height: True
+
+                MDLabel:
+                    text: root.datetime_line
+                    theme_text_color: "Secondary"
+                    adaptive_height: True
+
+                MDLabel:
+                    text: root.seats_line
+                    adaptive_height: True
+
+                MDLabel:
+                    text: root.total_line
+                    bold: True
+                    adaptive_height: True
+
+                MDRaisedButton:
+                    text: "Подтвердить покупку"
+                    size_hint_x: 1
+                    on_release: root.confirm()

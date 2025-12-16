@@ -54,7 +54,15 @@ class HallScreen(MDScreen):
 
     def proceed(self):
         selected = [(s.row, s.number) for s in self.seats if s.is_selected]
-        print(f"PROCEED session={self.session_id}, seats={selected}")
+        if not selected:
+            print("NO SEATS SELECTED")
+            return
+
+        checkout = self.manager.get_screen("checkout")
+        checkout.session_id = int(self.session_id)
+        checkout.seat_price = int(self.seat_price)
+        checkout.seats = [list(x) for x in selected]
+        self.manager.current = "checkout"
 
     def go_back(self):
         self.manager.current = "sessions"

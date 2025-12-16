@@ -5,7 +5,14 @@
         MDTopAppBar:
             title: "Мои билеты"
             elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
 
-        MDLabel:
-            text: "Здесь будут купленные билеты"
-            halign: "center"
+        MDScrollView:
+            MDBoxLayout:
+                id: tickets_container
+                orientation: "vertical"
+                adaptive_height: True
+                size_hint_y: None
+                height: self.minimum_height
+                padding: "12dp"
+                spacing: "12dp"

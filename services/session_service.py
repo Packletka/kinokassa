@@ -21,3 +21,11 @@ class SessionService:
             if c["id"] == cinema_id:
                 return c["name"]
         return "Кинотеатр"
+
+    def get_by_id(self, session_id: int):
+        raw = json.loads(self.sessions_path.read_text(encoding="utf-8"))
+        sessions = [Session.model_validate(s) for s in raw]
+        for s in sessions:
+            if s.id == session_id:
+                return s
+        return None
