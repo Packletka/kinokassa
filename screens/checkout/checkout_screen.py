@@ -7,6 +7,8 @@ from services.session_service import SessionService
 from services.movie_service import MovieService
 from services.order_service import OrderService
 from services.auth_service import AuthService
+from services.hall_service import HallService
+
 
 Builder.load_file(str(Path(__file__).with_name("checkout_screen.kv")))
 
@@ -49,6 +51,7 @@ class CheckoutScreen(MDScreen):
         self.total_line = f"Итого: {total} ₽"
 
     def confirm(self):
+        from services.auth_service import AuthService
         auth = AuthService()
         user = auth.get_current_user()
         if not user:
@@ -62,8 +65,21 @@ class CheckoutScreen(MDScreen):
         os = OrderService()
 
         session = ss.get_by_id(int(self.session_id))
-        movie = ms.get_by_id(int(session.movie_id)) if session else None
-        cinema = ss.get_cinema_name(int(session.cinema_id)) if session else "Кинотеатр"
+        if not session:
+            self.manager.current = "home"
+            return
+
+        # ЗАНЯТЬ МЕСТА (до создания заказа!)
+        self.ids.err_label.text = ""
+        try:
+            hs = HallService()
+            hs.reserve_seats(int(self.session_id), [(r, s) for r, s in self.seats])
+        except Exception as e:
+            self.ids.err_label.text = str(e)
+            return
+
+        movie = ms.get_by_id(int(session.movie_id))
+        cinema = ss.get_cinema_name(int(session.cinema_id))
 
         order = os.create_order(
             user_id=user.id,
@@ -76,9 +92,6 @@ class CheckoutScreen(MDScreen):
             seat_price=int(self.seat_price)
         )
 
-        print(f"ORDER CREATED id={order.id}, total={order.total}")
-
-        # Перейти в "Мои билеты" и обновить список
         tickets = self.manager.get_screen("tickets")
         if hasattr(tickets, "refresh"):
             tickets.refresh()

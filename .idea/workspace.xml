@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Add back navigation to tickets screen">
-      <change afterPath="$PROJECT_DIR$/data/current_user.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/users.json" afterDir="false" />
+    <list default="true" id="91975810-5ac1-427a-a783-a75b35ed9d36" name="Changes" comment="Simplify auth flow and fix profile UX">
+      <change afterPath="$PROJECT_DIR$/services/hall_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/occupied_seats.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/occupied_seats.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/orders.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/orders.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/order.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/order.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/checkout/checkout_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/checkout/checkout_screen.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/screens/checkout/checkout_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/checkout/checkout_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/home/home_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/home/home_screen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/home/home_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/home/home_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/profile/profile_screen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/screens/profile/profile_screen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/profile/profile_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/profile/profile_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/sessions/sessions_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/tickets/tickets_screen.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/order_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/order_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/screens/hall/hall_screen.py" beforeDir="false" afterPath="$PROJECT_DIR$/screens/hall/hall_screen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +116,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765871476671</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Simplify auth flow and fix profile UX">
+      <option name="closed" value="true" />
+      <created>1765875418114</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1765875418114</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -135,6 +134,7 @@
     <MESSAGE value="Add sessions screen with cinema selection and navigation" />
     <MESSAGE value="Add hall seat selection and price calculation" />
     <MESSAGE value="Add back navigation to tickets screen" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add back navigation to tickets screen" />
+    <MESSAGE value="Simplify auth flow and fix profile UX" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simplify auth flow and fix profile UX" />
   </component>
 </project>

@@ -5,6 +5,7 @@ from kivy.properties import NumericProperty
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.label import MDLabel
+from services.hall_service import HallService
 
 from models.seat import Seat
 from widgets.seat_button import SeatButton
@@ -23,9 +24,10 @@ class HallScreen(MDScreen):
         container = self.ids.hall_container
         container.clear_widgets()
 
-        layout = json.loads(Path("data/hall_layouts.json").read_text())["default"]
-        occupied = json.loads(Path("data/occupied_seats.json").read_text())
-        occupied_seats = occupied.get(str(self.session_id), [])
+        hs = HallService()
+        layout = hs.get_layout()
+        occupied_seats = hs.get_occupied(int(self.session_id))
+        occupied_set = set(occupied_seats)
 
         self.seats = []
 
@@ -34,7 +36,7 @@ class HallScreen(MDScreen):
             row_layout.add_widget(MDLabel(text=f"Ряд {row}", size_hint_x=None, width="60dp"))
 
             for seat_num in range(1, layout["seats_per_row"] + 1):
-                is_occupied = [row, seat_num] in occupied_seats
+                is_occupied = (row, seat_num) in occupied_set
                 seat = Seat(row=row, number=seat_num, is_occupied=is_occupied)
                 btn = SeatButton(seat, self.on_seat_toggle)
                 row_layout.add_widget(btn)
